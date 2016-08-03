@@ -7,8 +7,8 @@ SRC_URI = "https://github.com/apple/cups/releases/download/release-${PV}/${BP}-s
            file://use_echo_only_in_init.patch \
            file://0001-don-t-try-to-run-generated-binaries.patch \
            file://cups_serverbin.patch \
-           file://${PN}.ldm.conf \
-           file://${PN}.ldm.init \
+           file://${PN}.conf \
+           file://${PN}.init \
 	  "
 
 CONFFILES_${PN} = "${sysconfdir}/cupsd.conf ${sysconfdir}/default/cupsd"
