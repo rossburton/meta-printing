@@ -40,6 +40,8 @@ SRC_URI_class-native = "${SRC_URI_BASE} \
 SRC_URI[md5sum] = "c9682ce6b852f9197c69905a43928907"
 SRC_URI[sha256sum] = "cf3c0dce67db1557a87366969945f9c5235887989c0b585e037af366dc035989"
 
+EXTRA_AUTORECONF += "--exclude=autopoint,autoheader"
+
 EXTRA_OECONF = "--without-x --with-system-libtiff --without-jbig2dec \
                 --with-fontpath=${datadir}/fonts \
                 --without-libidn --with-cups-serverbin=${exec_prefix}/lib/cups \
@@ -48,6 +50,15 @@ EXTRA_OECONF = "--without-x --with-system-libtiff --without-jbig2dec \
 
 EXTRA_OECONF_append_mips = " --with-large_color_index=0"
 EXTRA_OECONF_append_mipsel = " --with-large_color_index=0"
+EXTRA_OECONF_append_beaglebone = " --with-large_color_index=0"
+
+EXTRA_OECONF_append_class-target = " --enable-dynamic \
+                                     --enable-fontconfig \
+                                     --disable-compile-inits \
+                                     --with-ijs \
+                                     --enable-cups \
+                                     --enable-dbus \
+                                     --with-pdftoraster"
 
 # Explicity disable libtiff, fontconfig,
 # freetype, cups for ghostscript-native
