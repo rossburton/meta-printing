@@ -7,7 +7,14 @@ SRC_URI = "https://github.com/apple/cups/releases/download/release-${PV}/${BP}-s
            file://use_echo_only_in_init.patch \
            file://0001-don-t-try-to-run-generated-binaries.patch \
            file://cups_serverbin.patch \
+           file://${PN}.ldm.conf \
+           file://${PN}.ldm.init \
 	  "
+
+CONFFILES_${PN} = "${sysconfdir}/cupsd.conf ${sysconfdir}/default/cupsd"
+
+INITSCRIPT_NAME = "cupsd"
+INITSCRIPT_PARAMS = "defaults 65"
 
 UPSTREAM_CHECK_URI = "https://github.com/apple/cups/releases"
 UPSTREAM_CHECK_REGEX = "cups-(?P<pver>\d+\.\d+(\.\d+)?)-source.tar"
@@ -16,7 +23,7 @@ LEAD_SONAME = "libcupsdriver.so"
 
 CLEANBROKEN = "1"
 
-inherit autotools-brokensep binconfig useradd systemd
+inherit autotools-brokensep binconfig update-rc.d useradd systemd
 
 USERADD_PACKAGES = "${PN}"
 GROUPADD_PARAM_${PN} = "--system lpadmin"
@@ -63,6 +70,13 @@ do_compile () {
 
 do_install () {
 	oe_runmake "DSTROOT=${D}" install
+
+	INIT_DIR = "${D}${sysconfdir}/init.d"
+	CONF_DIR = "${D}${sysconfdir}/default"
+
+	install -d ${INIT_DIR} ${CONF_DIR}
+	install -m 0644 ${WORKDIR}/${PN}.conf ${CONF_DIR}/${PN}
+	install -m 0755 ${WORKDIR}/${PN}.init ${INIT_DIR}/${PN}d
 
 	# Remove /var/run from package as cupsd will populate it on startup
 	rm -fr ${D}/${localstatedir}/run
