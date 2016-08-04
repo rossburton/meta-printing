@@ -120,11 +120,10 @@ FILES_${PN}-libimage = "${libdir}/libcupsimage.so.*"
 
 #package the html for the webgui inside the main packages (~1MB uncompressed)
 
-FILES_${PN} += "${datadir}/doc/cups/images \
-                ${datadir}/doc/cups/*html \
-                ${datadir}/doc/cups/*.css \
+FILES_${PN} += "${datadir}/cups/ \
                 ${datadir}/icons/ \
                "
+
 SYSROOT_PREPROCESS_FUNCS += "cups_sysroot_preprocess"
 cups_sysroot_preprocess () {
 	sed -i ${SYSROOT_DESTDIR}${bindir_crossscripts}/cups-config -e 's:cups_datadir=.*:cups_datadir=${datadir}/cups:' -e 's:cups_serverbin=.*:cups_serverbin=${libdir}/cups:'
