@@ -1,17 +1,17 @@
 SUMMARY = "An Internet printing system for Unix"
 SECTION = "console/utils"
 LICENSE = "GPLv2 & LGPLv2"
-DEPENDS = "gnutls libpng jpeg dbus dbus-glib zlib libusb"
+DEPENDS = "gnutls libgcrypt libpng jpeg dbus dbus-glib zlib libusb"
 
 SRC_URI = "https://github.com/apple/cups/releases/download/release-${PV}/${BP}-source.tar.gz \
            file://use_echo_only_in_init.patch \
            file://0001-don-t-try-to-run-generated-binaries.patch \
            file://cups_serverbin.patch \
-           file://${PN}.ldm.conf \
-           file://${PN}.ldm.init \
+           file://${PN}.conf \
+           file://${PN}.init \
 	  "
 
-CONFFILES_${PN} = "${sysconfdir}/cupsd.conf ${sysconfdir}/default/cupsd"
+CONFFILES_${PN} += "${sysconfdir}/cupsd.conf ${sysconfdir}/default/cups"
 
 INITSCRIPT_NAME = "cupsd"
 INITSCRIPT_PARAMS = "defaults 65"
@@ -40,6 +40,8 @@ PACKAGECONFIG[systemd] = "--with-systemd=${systemd_system_unitdir},--without-sys
 PACKAGECONFIG[xinetd] = "--with-xinetd=${sysconfdir}/xinetd.d,--without-xinetd,xinetd"
 
 EXTRA_OECONF = " \
+               --with-docdir=${datadir}/cups/html \
+               --disable-libpaper \
                --enable-gnutls \
                --enable-dbus \
                --enable-browsing \
@@ -118,12 +120,9 @@ FILES_${PN}-libimage = "${libdir}/libcupsimage.so.*"
 
 #package the html for the webgui inside the main packages (~1MB uncompressed)
 
-FILES_${PN} += "${datadir}/doc/cups/images \
-                ${datadir}/doc/cups/*html \
-                ${datadir}/doc/cups/*.css \
+FILES_${PN} += "${datadir}/cups/ \
                 ${datadir}/icons/ \
                "
-CONFFILES_${PN} += "${sysconfdir}/cups/cupsd.conf"
 
 SYSROOT_PREPROCESS_FUNCS += "cups_sysroot_preprocess"
 cups_sysroot_preprocess () {
