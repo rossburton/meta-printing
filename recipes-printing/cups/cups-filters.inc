@@ -2,7 +2,7 @@ DESCRIPTION = "CUPS backends, filters, and other software"
 HOMEPAGE = "http://www.linuxfoundation.org/collaborate/workgroups/openprinting/cups-filters"
 
 LICENSE = "GPLv2 & LGPLv2 & MIT & GPLv2+ & GPLv3"
-LIC_FILES_CHKSUM = "file://COPYING;md5=d420e185486344da6176553848350932"
+LIC_FILES_CHKSUM = "file://COPYING;md5=1905bf57de6c8e9e3893ede5e214daea"
 
 SECTION = "console/utils"
 
@@ -68,7 +68,20 @@ FILES_${PN} += "\
         /usr/share/cups/mime \
         /usr/share/cups/ppdc \
         /usr/share/ppd/cupsfilters \
-        "
+        /usr/share/cups/braille \
+        /usr/share/cups/banners \
+        /usr/share/cups/braille/index.sh \
+        /usr/share/cups/braille/cups-braille.sh \
+        /usr/share/cups/braille/indexv3.sh \
+        /usr/share/cups/braille/indexv4.sh \
+        /usr/share/cups/banners/topsecret \
+        /usr/share/cups/banners/secret \
+        /usr/share/cups/banners/confidential \
+        /usr/share/cups/banners/unclassified \
+        /usr/share/cups/banners/form \
+        /usr/share/cups/banners/classified \
+        /usr/share/cups/banners/standard \
+"
 
 do_install_append() {
 	# remove banners, braille dirs
