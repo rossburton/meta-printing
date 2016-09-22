@@ -3,7 +3,7 @@
 ======================================
 
 This README file contains information on the contents and use of the
-meta-printing layer for openembedded..
+meta-printing layer for openembedded.
 
 Please see the corresponding sections below for details.
 
@@ -36,6 +36,7 @@ or::
   layers: meta, meta-python
   branch: master or krogoth
 
+
 Patches
 =======
 
@@ -43,26 +44,28 @@ Please submit any patches against the meta-printing layer by using the github
 pull-request feature.  Fork the repo, make a branch, do the work, pull from
 upstream, create the pull request, yada-yada.
 
-Maintainers: Steve Arnold <nerdboy@gentoo.org>
-             Fan Xin <fan.xin@jp.fujitsu.com>
+Maintainers:
 
-Table of Contents
-=================
+  Steve Arnold <nerdboy@gentoo.org>
+  Fan Xin <fan.xin@jp.fujitsu.com>
 
-  I. Adding the meta-printing layer to your build
- II. Misc
 
+How to Use this Layer
+=====================
 
 I. Adding the meta-printing layer to your build
-===============================================
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 In order to use this layer, you need to make the build system aware of
-it.
+it.  Follow the normal setup instructions for your BSP layer or Yocto
+reference build, either by manually cloning the required layers or by
+using a manifest tool such as `vct-beagleboard-bsp-platform`_ or the
+FSL community BSP manifest.
 
 Assuming the meta-printing layer exists at the top-level of your
 yocto build tree, you can add it to the build system by adding the
 location of the meta-printing layer to bblayers.conf, along with any
-other layers needed. e.g.:
+other layers needed, e.g.::
 
   BBLAYERS ?= " \
     /path/to/yocto/meta \
@@ -76,15 +79,16 @@ other layers needed. e.g.:
 If you need networking support, also add meta-openembedded/meta-networking to
 the above.
 
+.. _vct-beagleboard-bsp-platform: https://github.com/VCTLabs/vct-beagleboard-bsp-platform
 
 II. Misc
-========
+~~~~~~~~
 
-For newer kernel recipes, you will need the libc-headers and python-evdev (which
-is the current default).  For older kernels, you should set the priority of the
-meta-printing layer lower, or set preferred_versions for the above two recipes.
+Newer kernel recipes:
 
-For (very) recent beaglebone or mips octeon kernels add the `meta-small-arm`_
-layer and leave the above defaults as-is.
+For a few (very) recent beaglebone or mips octeon kernels add the `meta-small-arm`_
+mini-bsp layer and leave the above defaults as-is.
 
 .. _meta-small-arm: https://github.com/sarnold/meta-small-arm-extra
+
+
