@@ -10,3 +10,11 @@ SRC_URI[md5sum] = "0c16da7f8e590430a831c37315df27c4"
 SRC_URI[sha256sum] = "02a77b56596d9a34342eb5f384c736d1e2df0299ebed6d9d4fe46549b9262df0"
 
 inherit setuptools
+
+RDEPENDS_${PN} += "\
+    ${PYTHON_PN}-ctypes \
+    ${PYTHON_PN}-fcntl \
+    ${PYTHON_PN}-io \
+    ${PYTHON_PN}-shell \
+    ${PYTHON_PN}-stringold \
+    "
