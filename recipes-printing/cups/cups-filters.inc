@@ -89,6 +89,9 @@ do_install_append() {
 
 	# remove testprint (already provided by cups)
 	rm -f ${D}/usr/share/cups/data/testprint
+
+	# remove sysroot path contamination from pkgconfig file
+	sed -i -e 's:${STAGING_DIR_TARGET}::' ${D}/${libdir}/pkgconfig/libcupsfilters.pc
 }
 
 RDEPENDS_${PN} += "bash"
