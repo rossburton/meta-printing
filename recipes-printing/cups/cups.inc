@@ -73,8 +73,8 @@ do_compile () {
 do_install () {
 	oe_runmake "DSTROOT=${D}" install
 
-	INIT_DIR = "${D}${sysconfdir}/init.d"
-	CONF_DIR = "${D}${sysconfdir}/default"
+	INIT_DIR="${D}${sysconfdir}/init.d"
+	CONF_DIR="${D}${sysconfdir}/default"
 
 	install -d ${INIT_DIR} ${CONF_DIR}
 	install -m 0644 ${WORKDIR}/${PN}.conf ${CONF_DIR}/${PN}
