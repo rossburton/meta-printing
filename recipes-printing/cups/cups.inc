@@ -73,12 +73,9 @@ do_compile () {
 do_install () {
 	oe_runmake "DSTROOT=${D}" install
 
-	INIT_DIR="${D}${sysconfdir}/init.d"
-	CONF_DIR="${D}${sysconfdir}/default"
-
-	install -d ${INIT_DIR} ${CONF_DIR}
-	install -m 0644 ${WORKDIR}/${PN}.conf ${CONF_DIR}/${PN}
-	install -m 0755 ${WORKDIR}/${PN}.init ${INIT_DIR}/${PN}d
+	install -d ${D}${sysconfdir}/init.d ${D}${sysconfdir}/default
+	install -m 0644 ${WORKDIR}/${PN}.conf ${D}${sysconfdir}/default/${PN}
+	install -m 0755 ${WORKDIR}/${PN}.init ${D}${sysconfdir}/init.d/${PN}d
 
 	# Remove /var/run from package as cupsd will populate it on startup
 	rm -fr ${D}/${localstatedir}/run
