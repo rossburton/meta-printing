@@ -73,7 +73,7 @@ other layers needed, e.g.::
     /path/to/yocto/meta-yocto-bsp \
     /path/to/yocto/meta-openembedded/meta-oe \
     /path/to/yocto/meta-openembedded/meta-python \
-    /path/to/yocto/meta-meta-printing \
+    /path/to/yocto/meta-printing \
     "
 
 If you need networking support, also add meta-openembedded/meta-networking to
@@ -86,7 +86,7 @@ II. Misc
 
 Newer kernel recipes:
 
-For a few (very) recent beaglebone or mips octeon kernels add the `meta-small-arm`_
+For a few recent beaglebone, socfpga, imx6, or mips octeon kernels add the `meta-small-arm`_
 mini-bsp layer and leave the above defaults as-is.
 
 .. _meta-small-arm: https://github.com/sarnold/meta-small-arm-extra
