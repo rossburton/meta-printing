@@ -23,7 +23,7 @@ LEAD_SONAME = "libcupsdriver.so"
 
 CLEANBROKEN = "1"
 
-inherit autotools-brokensep binconfig update-rc.d useradd systemd
+inherit autotools-brokensep binconfig update-rc.d useradd systemd pkgconfig
 
 USERADD_PACKAGES = "${PN}"
 GROUPADD_PARAM_${PN} = "--system lpadmin"
