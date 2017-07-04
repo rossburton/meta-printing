@@ -6,7 +6,7 @@ LIC_FILES_CHKSUM = "file://COPYING;md5=1905bf57de6c8e9e3893ede5e214daea"
 
 SECTION = "console/utils"
 
-DEPENDS = "cups glib-2.0 dbus dbus-glib lcms ghostscript poppler qpdf libpng"
+DEPENDS = "cups glib-2.0 glib-2.0-native dbus dbus-glib lcms ghostscript poppler qpdf libpng"
 DEPENDS_class-native = "poppler-native glib-2.0-native dbus-native pkgconfig-native gettext-native libpng-native"
 
 SRC_URI = "http://openprinting.org/download/cups-filters/cups-filters-${PV}.tar.gz"
