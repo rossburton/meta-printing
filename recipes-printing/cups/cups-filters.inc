@@ -2,7 +2,7 @@ DESCRIPTION = "CUPS backends, filters, and other software"
 HOMEPAGE = "http://www.linuxfoundation.org/collaborate/workgroups/openprinting/cups-filters"
 
 LICENSE = "GPLv2 & LGPLv2 & MIT & GPLv2+ & GPLv3"
-LIC_FILES_CHKSUM = "file://COPYING;md5=1905bf57de6c8e9e3893ede5e214daea"
+LIC_FILES_CHKSUM = "file://COPYING;md5=a4c88b7020cef4a77b4321f78cbe1e1c"
 
 SECTION = "console/utils"
 
@@ -63,6 +63,7 @@ FILES_${PN}-dbg += "\
 FILES_${PN} += "\
         ${libdir}/cups/filter \
         ${libdir}/cups/backend \
+        ${libdir}/cups/driver/driverless \
         /usr/share/cups/charsets \
         /usr/share/cups/drv \
         /usr/share/cups/mime \
@@ -95,3 +96,7 @@ do_install_append() {
 }
 
 RDEPENDS_${PN} += "bash"
+
+# This is needed if multiple recipes copy to the same directories
+# By default, files in RPM packages own all their parents.
+DIRFILES = "1"
