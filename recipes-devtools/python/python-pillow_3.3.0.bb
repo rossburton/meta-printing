@@ -35,6 +35,7 @@ do_compile_prepend() {
                -e s:/lib:${STAGING_BASELIBDIR}:g \
                -e s:/lib64:${STAGING_BASELIBDIR}:g \
                -e s:/usr/include:${STAGING_INCDIR}:g \
+               -e s:/usr/local/include:${STAGING_INCDIR}:g \
                ${S}/setup.py
 }
 
