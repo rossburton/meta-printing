@@ -21,6 +21,9 @@ EXTRA_OEMAKE_class-target = "LIBTOOL=${STAGING_BINDIR_CROSS}/${HOST_SYS}-libtool
 
 S="${WORKDIR}/${PN}-release-${PN}-${PV}"
 
+# avoid Makefile returning error on 'make clean' before configure was run
+CLEANBROKEN = "1"
+
 do_configure_prepend() {
 	sed -i "/docdir/d" "${S}"/make/libtool.mk
 }
