@@ -22,8 +22,9 @@ UPSTREAM_CHECK_REGEX = "cups-(?P<pver>\d+\.\d+(\.\d+)?)-source.tar"
 LEAD_SONAME = "libcupsdriver.so"
 
 CLEANBROKEN = "1"
+DIRFILES = "1"
 
-inherit autotools-brokensep binconfig update-rc.d useradd systemd
+inherit pkgconfig autotools-brokensep binconfig update-rc.d useradd systemd
 
 USERADD_PACKAGES = "${PN}"
 GROUPADD_PARAM_${PN} = "--system lpadmin"
