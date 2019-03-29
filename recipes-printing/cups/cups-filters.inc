@@ -1,8 +1,8 @@
 DESCRIPTION = "CUPS backends, filters, and other software"
 HOMEPAGE = "http://www.linuxfoundation.org/collaborate/workgroups/openprinting/cups-filters"
 
-LICENSE = "GPLv2 & LGPLv2 & MIT & GPLv2+ & GPLv3"
-LIC_FILES_CHKSUM = "file://COPYING;md5=1905bf57de6c8e9e3893ede5e214daea"
+LICENSE = "GPLv2 & LGPLv2 & MIT & GPLv2+ & GPLv3 & BSD-4-clause"
+LIC_FILES_CHKSUM = "file://COPYING;md5=079833adec8b92690ca302dd95507100"
 
 SECTION = "console/utils"
 
@@ -63,6 +63,7 @@ FILES_${PN}-dbg += "\
 FILES_${PN} += "\
         ${libdir}/cups/filter \
         ${libdir}/cups/backend \
+        ${libdir}/cups/driver \
         /usr/share/cups/charsets \
         /usr/share/cups/drv \
         /usr/share/cups/mime \
