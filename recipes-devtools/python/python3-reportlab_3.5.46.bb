@@ -1,24 +1,23 @@
 DESCRIPTION = "The ReportLab Toolkit. An Open Source Python library for generating PDFs and graphics."
 SECTION = "devel"
 LICENSE = "BSD"
-LIC_FILES_CHKSUM = "file://LICENSE.txt;md5=a90e07a951aff3b3bef08144836a3520"
+LIC_FILES_CHKSUM = "file://LICENSE.txt;md5=b5239069dd30045258db1a185eb1d2dd"
 
 SRC_URI = "https://pypi.python.org/packages/source/r/reportlab/reportlab-${PV}.tar.gz;downloadfilename=reportlab-{PV}.tar.gz \
            http://www.reportlab.com/ftp/fonts/pfbfer-20070710.zip;name=fonts;unpack=0 \
-           file://reportlab-no-pip.patch \
 "
 
-SRC_URI[md5sum] = "8ad6181b69ec515d4f6d8bb894682d5d"
-SRC_URI[sha256sum] = "f48900b9321bcb2871a46543993bd995148d769a11a9e24495f25b4ec0bbe267"
+SRC_URI[md5sum] = "5c0e3a44e794547aed6f85149bd684f1"
+SRC_URI[sha256sum] = "56d71b78e7e4bb31a93e1dff13c22d19b7fb3890b021a39b6c3661b095bd7de8"
 
 SRC_URI[fonts.md5sum] = "35d20e26490cb2a8646fab6276ac6a4c"
 SRC_URI[fonts.sha256sum] = "fb1462ff6ce8efae58a0c496f0537c5ac16d4895c68f1640c2973db574ddb376"
 
 S = "${WORKDIR}/reportlab-${PV}"
 
-inherit pypi setuptools
+inherit pypi setuptools3
 
-DEPENDS = "python-pillow libart-lgpl freetype"
+DEPENDS = "python3-pillow freetype"
 
 CFLAGS += "-fno-strict-aliasing -I${STAGING_INCDIR}/freetype2"
 LDFLAGS += "-L${STAGING_LIBDIR}"
@@ -42,7 +41,5 @@ addtask unpack_extra after do_unpack before do_patch
 do_compile() {
     export STAGING_LIBDIR=${STAGING_LIBDIR}
     export STAGING_INCDIR=${STAGING_INCDIR}
-    distutils_do_compile
+    distutils3_do_compile
 }
-
-
