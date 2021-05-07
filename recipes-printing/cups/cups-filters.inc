@@ -2,7 +2,7 @@ DESCRIPTION = "CUPS backends, filters, and other software"
 HOMEPAGE = "http://www.linuxfoundation.org/collaborate/workgroups/openprinting/cups-filters"
 
 LICENSE = "GPLv2 & LGPLv2 & MIT & GPLv2+ & GPLv3"
-LIC_FILES_CHKSUM = "file://COPYING;md5=1905bf57de6c8e9e3893ede5e214daea"
+LIC_FILES_CHKSUM = "file://COPYING;md5=794bc12f02f100806cd5f19304d03f7b"
 
 SECTION = "console/utils"
 
@@ -29,6 +29,8 @@ EXTRA_OECONF_append_class-native = " --with-pdftops=pdftops \
                                     --with-png --without-jpeg --without-tiff"
 
 EXTRA_OEMAKE = "-j1"
+
+DIRFILES = "1"
 
 BBCLASSEXTEND = "native"
 
@@ -63,6 +65,7 @@ FILES_${PN}-dbg += "\
 FILES_${PN} += "\
         ${libdir}/cups/filter \
         ${libdir}/cups/backend \
+        ${libdir}/cups/driver \
         /usr/share/cups/charsets \
         /usr/share/cups/drv \
         /usr/share/cups/mime \
