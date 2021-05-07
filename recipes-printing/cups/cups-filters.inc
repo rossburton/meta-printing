@@ -30,6 +30,8 @@ EXTRA_OECONF_append_class-native = " --with-pdftops=pdftops \
 
 EXTRA_OEMAKE = "-j1"
 
+DIRFILES = "1"
+
 BBCLASSEXTEND = "native"
 
 PACKAGECONFIG[jpeg] = "--with-jpeg,--without-jpeg,jpeg"
