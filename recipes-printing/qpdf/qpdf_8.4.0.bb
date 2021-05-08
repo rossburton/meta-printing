@@ -4,11 +4,12 @@ LICENSE = "Artistic-2.0"
 SECTION = "libs"
 DEPENDS = "libpcre zlib jpeg"
 
-SRC_URI = "https://github.com/qpdf/qpdf/archive/release-qpdf-${PV}.tar.gz"
+SRC_URI = "http://downloads.sourceforge.net/${BPN}/${BP}.tar.gz"
 
 LIC_FILES_CHKSUM = "file://Artistic-2.0;md5=7806296b9fae874361e6fb10072b7ee3"
-SRC_URI[md5sum] = "328db8214bc3a187ba912e310b14d498"
-SRC_URI[sha256sum] = "71d9b6c77ac56521d86a481cb9e52c0774de106c1dcf7a0644a05bd1230be87e"
+
+SRC_URI[md5sum] = "60a66cf8cbdb3bb0d3bcf5b2f53ec06b"
+SRC_URI[sha256sum] = "39018f3bff700c68e41f6d44ea9f7842e2a5af200a80b2cdec7fa32a4abac4a0"
 
 inherit autotools-brokensep gettext
 
@@ -20,7 +21,7 @@ EXTRA_OECONF = "--without-random \
 
 EXTRA_OEMAKE_class-target = "LIBTOOL=${STAGING_BINDIR_CROSS}/${HOST_SYS}-libtool"
 
-S="${WORKDIR}/${PN}-release-${PN}-${PV}"
+S="${WORKDIR}/${PN}-${PV}"
 
 # avoid Makefile returning error on 'make clean' before configure was run
 CLEANBROKEN = "1"

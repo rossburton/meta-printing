@@ -2,7 +2,7 @@ DESCRIPTION = "CUPS backends, filters, and other software"
 HOMEPAGE = "http://www.linuxfoundation.org/collaborate/workgroups/openprinting/cups-filters"
 
 LICENSE = "GPLv2 & LGPLv2 & MIT & GPLv2+ & GPLv3 & BSD-4-clause"
-LIC_FILES_CHKSUM = "file://COPYING;md5=079833adec8b92690ca302dd95507100"
+LIC_FILES_CHKSUM = "file://COPYING;md5=516215fd57564996d70327db19b368ff"
 
 SECTION = "console/utils"
 
@@ -13,19 +13,17 @@ SRC_URI = "http://openprinting.org/download/cups-filters/cups-filters-${PV}.tar.
 
 inherit autotools-brokensep gettext pkgconfig
 
-EXTRA_OECONF_append = " --enable-ghostscript --disable-ijs --disable-ldap \
+EXTRA_OECONF_append = " --disable-ldap \
                        --with-pdftops=hybrid --enable-imagefilters \
                        --enable-ghostscript --with-gs-path=${bindir}/gs \
                        --with-pdftops-path=${bindir}/gs \
                        --with-fontdir=${datadir}/fonts --with-rcdir=no \
                        --with-cups-rundir=${localstatedir}/run/cups \
                        --localstatedir=${localstatedir}/var \
-                       --with-rcdir=no \
                        --without-php"
 
-EXTRA_OECONF_append_class-native = " --with-pdftops=pdftops \
+EXTRA_OECONF_append_class-native = " --with-pdftops=pdftops --disable-ldap \
                                     --disable-avahi --disable-ghostscript \
-                                    --disable-ijs --disable-ldap \
                                     --with-png --without-jpeg --without-tiff"
 
 EXTRA_OEMAKE = "-j1"
