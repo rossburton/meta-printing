@@ -1,7 +1,7 @@
 SUMMARY = "An Internet printing system for Unix"
 SECTION = "console/utils"
 LICENSE = "GPLv2 & LGPLv2"
-DEPENDS = "gnutls libgcrypt libpng jpeg dbus dbus-glib zlib libusb"
+DEPENDS = "pkgconfig-native gnutls libgcrypt libpng jpeg dbus dbus-glib zlib libusb"
 
 SRC_URI = "https://github.com/apple/cups/releases/download/release-${PV}/${BP}-source.tar.gz \
            file://use_echo_only_in_init.patch \
